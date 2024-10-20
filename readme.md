@@ -1,8 +1,3 @@
-Features
-Responsive Design: Adapts seamlessly to mobile and tablet devices.
-Dynamic Widget Management: Users can easily initialize and destroy widgets.
-Tabbed Interface: Quickly switch between instructions and widget management sections.
-
 Getting Started
 To run the Widget Manager app locally, follow these steps:
 
