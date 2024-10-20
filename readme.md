@@ -39,7 +39,7 @@ npm run build
 
 Technologies Used
 HTML5: Structure of the web application.
-CSS3: Styling for a modern, responsive design.
+CSS3: Styling.
 JavaScript: Interactivity and widget management logic.
 Node.js: Runtime environment to run the application.
 Jest: Testing framework for JavaScript.
