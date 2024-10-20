@@ -17,6 +17,7 @@ Install Dependencies: Make sure you have Node.js installed. Then, install the re
 npm install
 
 Run the Application: Start the application using:
+npm run build
 npm start
 
 This will launch the app in your default web browser using lite-server.
