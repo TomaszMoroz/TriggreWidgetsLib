@@ -1,0 +1,233 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Body Styling */
+body {
+  background-color: #f5f5f5;
+  color: #333;
+  padding: 20px;
+}
+
+/* Header */
+#header {
+  width: 100%;
+  background-color:  #58a15c;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Title */
+#header h1 {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+/* Navigation Menu */
+nav {
+  margin-left: auto;
+}
+
+nav .hamburger {
+  display: block; /* Ensure it displays on small devices */
+  color: white;
+  background-color: #66BB6A; /* Green for hamburger menu */
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Navigation List */
+#nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0; /* Margin for separation from header */
+}
+
+#nav-list.hidden {
+  display: none; /* Hide the list by default */
+}
+
+#nav-list li {
+  background-color: #58a15c; /* Match header color */
+  margin: 5px 0; /* Space between links */
+}
+
+#nav-list a {
+  color: white;
+  padding: 10px;
+  display: block; /* Make links block elements */
+  text-decoration: none; /* Remove underline */
+  transition: background-color 0.3s;
+}
+
+#nav-list a:hover {
+  background-color: #66BB6A; /* Darker green for hover */
+}
+
+/* Tab Content */
+#tab-content {
+  margin-top: 20px;
+}
+
+/* Tabs */
+.tab {
+  display: none;
+}
+
+.tab.active {
+  display: block;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons */
+button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #4CAF50; /* Green shade */
+  color: white;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049; /* Darker green shade for hover */
+}
+
+button:disabled {
+  background-color: #9E9E9E; /* Grey for disabled state */
+  cursor: not-allowed;
+}
+
+button + button {
+  margin-left: 10px;
+}
+
+/* Widget Box Styles */
+#root {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 20px;
+}
+
+/* Widget Styling */
+[widget] {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  margin: 10px;
+  background-color: #fff;
+  color: #333;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease-in-out;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+/* Visible State for Widgets (Google-style animation) */
+[widget].visible {
+  display: flex;
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Animation Class */
+.bounce-in {
+  animation: bounce-in 0.4s ease-out forwards;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Fade-Out Animation for Destroy */
+.fade-out {
+  animation: fade-out 0.4s ease-out forwards;
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* Status Log */
+#log {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  text-align: center;
+  color: #333;
+  min-height: 50px; /* Ensures space is maintained */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  /* Show hamburger on small devices */
+  .hamburger {
+    display: block; /* Show hamburger on small devices */
+    color: white;
+    background-color: #66BB6A; /* Green for hamburger menu */
+    padding: 5px 10px;
+    border-radius: 4px;
+  }
+
+  #root {
+    flex-direction: column; /* Stack widgets vertically on smaller devices */
+  }
+
+  [widget] {
+    width: 150px;
+    height: 150px;
+  }
+
+  button {
+    width: 100%;
+    margin-left: 0; /* Remove left margin */
+    margin-top: 10px; /* Add vertical spacing between buttons */
+  }
+
+  button + button {
+    margin-left: 0;
+  }
+
+  button:first-of-type {
+    margin-top: 0; /* Ensure no margin on the first button */
+  }
+}

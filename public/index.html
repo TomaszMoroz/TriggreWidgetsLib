@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widget Library Test</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header id="header">
+        <h1>Widgets Manager</h1>
+        <nav>
+            <div class="hamburger" id="hamburger" onclick="toggleMenu()">☰</div>
+        </nav>
+    </header>
+
+    <ul id="nav-list" class="hidden">
+        <li><a href="#" id="instructions-tab">Instructions</a></li>
+        <li><a href="#" id="widgets-tab">Widgets</a></li>
+    </ul>
+
+    <main id="tab-content">
+        <div id="instructions" class="tab active">
+            <h2>Instructions</h2>
+            <p>Welcome to the Widgets Manager! This tool allows you to easily manage various widgets within your app. 
+            To get started, click the "Widgets" tab to view and initialize the available widgets. You can use the "Init" 
+            button to load the widgets into view, and the "Destroy" button to remove them when you're done.</p>
+        </div>
+        <div id="widgets" class="tab">
+            <div>
+                <button id="init">Init</button>
+                <button id="destroy">Destroy</button>
+            </div>
+
+            <div id="log"></div>
+
+            <div id="root">
+                <div widget="widgets/a" class="hidden"></div>
+                <div></div>
+                <div widget="widgets/c" class="hidden"></div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="../lib/index.js"></script>
+    <script>
+        document.getElementById('instructions-tab').onclick = function() {
+            document.getElementById('instructions').classList.add('active');
+            document.getElementById('widgets').classList.remove('active');
+        };
+
+        document.getElementById('widgets-tab').onclick = function() {
+            document.getElementById('widgets').classList.add('active');
+            document.getElementById('instructions').classList.remove('active');
+        };
+
+        function toggleMenu() {
+            const navList = document.getElementById('nav-list');
+            navList.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
