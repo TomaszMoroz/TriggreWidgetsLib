@@ -8,10 +8,10 @@ To run the Widget Manager app locally, follow these steps:
 
 Clone the Repository:
 
-git clone https://github.com/yourusername/tryggre-widgets.git
+git clone https://github.com/TomaszMoroz/TriggreWidgetsLib.git
 
 Navigate to the Project Directory:
-cd tryggre-widgets
+cd TriggreWidgetsLib
 
 Install Dependencies: Make sure you have Node.js installed. Then, install the required packages:
 npm install
