@@ -38,9 +38,9 @@ nav {
 }
 
 nav .hamburger {
-  display: block; /* Ensure it displays on small devices */
+  display: block; 
   color: white;
-  background-color: #66BB6A; /* Green for hamburger menu */
+  background-color: #66BB6A;
   padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
@@ -58,14 +58,14 @@ nav .hamburger {
 }
 
 #nav-list li {
-  background-color: #58a15c; /* Match header color */
-  margin: 5px 0; /* Space between links */
+  background-color: #58a15c;
+  margin: 5px 0;
 }
 
 #nav-list a {
   color: white;
   padding: 10px;
-  display: block; /* Make links block elements */
+  display: block; 
   text-decoration: none; /* Remove underline */
   transition: background-color 0.3s;
 }
@@ -96,7 +96,7 @@ nav .hamburger {
 button {
   padding: 10px 20px;
   border: none;
-  background-color: #4CAF50; /* Green shade */
+  background-color: #4CAF50;
   color: white;
   font-size: 14px;
   border-radius: 4px;
@@ -105,12 +105,7 @@ button {
 }
 
 button:hover {
-  background-color: #45a049; /* Darker green shade for hover */
-}
-
-button:disabled {
-  background-color: #9E9E9E; /* Grey for disabled state */
-  cursor: not-allowed;
+  background-color: #45a049;
 }
 
 button + button {
@@ -142,7 +137,7 @@ button + button {
   transform: scale(0.8);
 }
 
-/* Visible State for Widgets (Google-style animation) */
+/* Visible State for Widgets */
 [widget].visible {
   display: flex;
   opacity: 1;
@@ -194,20 +189,11 @@ button + button {
   width: 100%;
   text-align: center;
   color: #333;
-  min-height: 50px; /* Ensures space is maintained */
+  min-height: 50px;
 }
 
 /* Responsive Design */
 @media (max-width: 600px) {
-  /* Show hamburger on small devices */
-  .hamburger {
-    display: block; /* Show hamburger on small devices */
-    color: white;
-    background-color: #66BB6A; /* Green for hamburger menu */
-    padding: 5px 10px;
-    border-radius: 4px;
-  }
-
   #root {
     flex-direction: column; /* Stack widgets vertically on smaller devices */
   }
@@ -219,15 +205,10 @@ button + button {
 
   button {
     width: 100%;
-    margin-left: 0; /* Remove left margin */
     margin-top: 10px; /* Add vertical spacing between buttons */
   }
 
   button + button {
     margin-left: 0;
-  }
-
-  button:first-of-type {
-    margin-top: 0; /* Ensure no margin on the first button */
   }
 }
