@@ -1,5 +1,5 @@
-import WidgetA from '../lib/widgets/a'; // Adjust the import based on your structure
-import X from '../lib/X'; // Import the main widget manager
+import WidgetA from '../lib/widgets/a';
+import X from '../lib/X';
 
 describe('WidgetA Class', () => {
     let target;
