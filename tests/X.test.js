@@ -13,13 +13,13 @@ describe('WidgetA Class', () => {
     it('should initialize correctly', async () => {
         await widgetA.init(target);
         expect(target.classList.contains('initialized-a')).toBe(true);
-        expect(target.innerHTML).toBe('<p>Widget A initialized</p>'); // Check sanitized content
+        expect(target.innerHTML).toBe('<p>Widget A initialized</p>');
     });
 
     it('should destroy correctly', () => {
         widgetA.destroy(target);
         expect(target.classList.contains('initialized-a')).toBe(false);
-        expect(target.innerHTML).toBe(''); // Check that innerHTML is cleared
+        expect(target.innerHTML).toBe('');
     });
 });
 
@@ -49,7 +49,7 @@ describe('X Class', () => {
          // Use a delay to wait for the fade-out animation to complete
         await new Promise((resolve) => setTimeout(resolve, 500));
 
-        expect(target.querySelector('[widget]').classList.contains('initialized-a')).toBe(false); // Check if class is removed
-        expect(target.querySelector('[widget]').innerHTML).toBe(''); // Check if innerHTML is cleared
+        expect(target.querySelector('[widget]').classList.contains('initialized-a')).toBe(false);
+        expect(target.querySelector('[widget]').innerHTML).toBe('');
     });
 });
