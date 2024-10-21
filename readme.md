@@ -1,8 +1,3 @@
-Features
-Responsive Design: Adapts seamlessly to mobile and tablet devices.
-Dynamic Widget Management: Users can easily initialize and destroy widgets.
-Tabbed Interface: Quickly switch between instructions and widget management sections.
-
 Getting Started
 To run the Widget Manager app locally, follow these steps:
 
@@ -17,6 +12,7 @@ Install Dependencies: Make sure you have Node.js installed. Then, install the re
 npm install
 
 Run the Application: Start the application using:
+npm run build
 npm start
 
 This will launch the app in your default web browser using lite-server.
@@ -38,7 +34,7 @@ npm run build
 
 Technologies Used
 HTML5: Structure of the web application.
-CSS3: Styling for a modern, responsive design.
+CSS3: Styling.
 JavaScript: Interactivity and widget management logic.
 Node.js: Runtime environment to run the application.
 Jest: Testing framework for JavaScript.
