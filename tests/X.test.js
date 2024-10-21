@@ -46,6 +46,9 @@ describe('X Class', () => {
 
         X.destroy(target);
 
+         // Use a delay to wait for the fade-out animation to complete
+        await new Promise((resolve) => setTimeout(resolve, 500));
+
         expect(target.querySelector('[widget]').classList.contains('initialized-a')).toBe(false); // Check if class is removed
         expect(target.querySelector('[widget]').innerHTML).toBe(''); // Check if innerHTML is cleared
     });
