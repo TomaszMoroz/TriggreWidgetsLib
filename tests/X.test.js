@@ -21,6 +21,19 @@ describe('WidgetA Class', () => {
         expect(target.classList.contains('initialized-a')).toBe(false);
         expect(target.innerHTML).toBe('');
     });
+
+
+    it('should not initialize if target is not provided', async () => {
+        await expect(widgetA.init()).rejects.toThrow();
+    });
+
+    it('should call destroy with the correct target', () => {
+        const targetDestroy = document.createElement('div');
+        widgetA.init(targetDestroy);
+        widgetA.destroy(targetDestroy);
+        expect(targetDestroy.classList.contains('initialized-a')).toBe(false);
+        expect(targetDestroy.innerHTML).toBe('');
+    });
 });
 
 describe('X Class', () => {
@@ -40,6 +53,17 @@ describe('X Class', () => {
         expect(target.querySelector('[widget]').classList.contains('initialized-a')).toBe(true);
     });
 
+    it('should handle errors during widget initialization', async () => {
+        const callback = jest.fn();
+
+        // Simulate an error in the resolver
+        const mockResolver = jest.fn().mockRejectedValue(new Error('Error loading widget'));
+
+        await X.init(target, callback, mockResolver);
+
+        expect(callback).toHaveBeenCalledWith(expect.any(Error)); // Ensure an error occurred
+    });
+
 
     it('should destroy widgets correctly', async () => {
         await X.init(target, jest.fn()); // Initialize first
@@ -52,4 +76,5 @@ describe('X Class', () => {
         expect(target.querySelector('[widget]').classList.contains('initialized-a')).toBe(false);
         expect(target.querySelector('[widget]').innerHTML).toBe('');
     });
+
 });
