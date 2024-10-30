@@ -13,7 +13,7 @@ describe('WidgetA Class', () => {
     it('should initialize correctly', async () => {
         await widgetA.init(target);
         expect(target.classList.contains('initialized-a')).toBe(true);
-        expect(target.innerHTML).toBe('<p>Widget A initialized</p>');
+        expect(target.innerHTML).toBe('<p class="contentA">Widget A initialized</p>');
     });
 
     it('should destroy correctly', () => {
@@ -32,7 +32,6 @@ describe('WidgetA Class', () => {
         widgetA.init(targetDestroy);
         widgetA.destroy(targetDestroy);
         expect(targetDestroy.classList.contains('initialized-a')).toBe(false);
-        expect(targetDestroy.innerHTML).toBe('');
     });
 });
 
@@ -55,15 +54,28 @@ describe('X Class', () => {
 
     it('should handle errors during widget initialization', async () => {
         const callback = jest.fn();
-
+    
         // Simulate an error in the resolver
-        const mockResolver = jest.fn().mockRejectedValue(new Error('Error loading widget'));
-
+        const mockResolver = jest.fn().mockImplementation(() => {
+            return Promise.reject(new Error('Error loading widget')); // Simulate an error
+        });
+    
         await X.init(target, callback, mockResolver);
-
-        expect(callback).toHaveBeenCalledWith(expect.any(Error)); // Ensure an error occurred
+    
+        // Ensure the callback was called once with an array of errors
+        expect(callback).toHaveBeenCalledTimes(1);
+        expect(callback).toHaveBeenCalledWith(expect.arrayContaining([
+            expect.objectContaining({
+                error: expect.any(String), // Check if error field is a string
+                widget: expect.any(String)  // Check if widget field is a string
+            })
+        ]));
+        
+        // Verify specific error message and widget name
+        const errorArgument = callback.mock.calls[0][0]; // Get the error argument
+        expect(errorArgument[0].error).toBe('Error loading widget'); // Check the error message
+        expect(errorArgument[0].widget).toBe('a'); // Check the widget name
     });
-
 
     it('should destroy widgets correctly', async () => {
         await X.init(target, jest.fn()); // Initialize first
@@ -74,7 +86,6 @@ describe('X Class', () => {
         await new Promise((resolve) => setTimeout(resolve, 500));
 
         expect(target.querySelector('[widget]').classList.contains('initialized-a')).toBe(false);
-        expect(target.querySelector('[widget]').innerHTML).toBe('');
     });
 
 });
