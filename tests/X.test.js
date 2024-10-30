@@ -40,45 +40,42 @@ describe('X Class', () => {
 
     beforeEach(() => {
         target = document.createElement('div');
-        target.innerHTML = '<div widget="widgets/a" class="hidden"></div>'; // Simulating a widget
+        target.innerHTML = '<div widget="widgets/a" class="hidden"></div>';
     });
 
     it('should initialize widgets correctly', async () => {
-        const callback = jest.fn(); // Mock callback
+        const callback = jest.fn();
 
         await X.init(target, callback);
 
-        expect(callback).toHaveBeenCalledWith(null); // Ensure no errors occurred
+        expect(callback).toHaveBeenCalledWith(null);
         expect(target.querySelector('[widget]').classList.contains('initialized-a')).toBe(true);
     });
 
     it('should handle errors during widget initialization', async () => {
         const callback = jest.fn();
     
-        // Simulate an error in the resolver
         const mockResolver = jest.fn().mockImplementation(() => {
-            return Promise.reject(new Error('Error loading widget')); // Simulate an error
+            return Promise.reject(new Error('Error loading widget'));
         });
     
         await X.init(target, callback, mockResolver);
     
-        // Ensure the callback was called once with an array of errors
         expect(callback).toHaveBeenCalledTimes(1);
         expect(callback).toHaveBeenCalledWith(expect.arrayContaining([
             expect.objectContaining({
-                error: expect.any(String), // Check if error field is a string
-                widget: expect.any(String)  // Check if widget field is a string
+                error: expect.any(String),
+                widget: expect.any(String)
             })
         ]));
         
-        // Verify specific error message and widget name
-        const errorArgument = callback.mock.calls[0][0]; // Get the error argument
-        expect(errorArgument[0].error).toBe('Error loading widget'); // Check the error message
-        expect(errorArgument[0].widget).toBe('a'); // Check the widget name
+        const errorArgument = callback.mock.calls[0][0];
+        expect(errorArgument[0].error).toBe('Error loading widget');
+        expect(errorArgument[0].widget).toBe('a');
     });
 
     it('should destroy widgets correctly', async () => {
-        await X.init(target, jest.fn()); // Initialize first
+        await X.init(target, jest.fn());
 
         X.destroy(target);
 
